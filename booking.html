@@ -27,7 +27,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <div class="w3-bar w3-black">
       <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>Flight</button>
       <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');"><i class="fa fa-bed w3-margin-right"></i>Hotel</button>
-      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Car');"><i class="fa fa-car w3-margin-right"></i>Rental</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Car');"><i class="fa fa-car w3-margin-right"></i>Activities & Rental</button>
     </div>
 
     <!-- Tabs -->
@@ -47,18 +47,107 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     </div>
 
     <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
-      <h3>Find the best hotels</h3>
-      <p>Book a hotel with us and get the best fares and promotions.</p>
-      <p>We know hotels - we know comfort.</p>
-      <p><button class="w3-button w3-dark-grey">Search Hotels</button></p>
+		<h3>Find the best Beachfront hotels</h3>
+		<img src="images/huts2.jpg" alt="Beach Villas" style="width:100%">
+		<p>Amazing Hotel: Beachfront Hotel</p>
+		<p><button id="saveFavoriteBtn" class="w3-button w3-dark-grey">Save as Favorite</button></p>
     </div>
 
     <div id="Car" class="w3-container w3-white w3-padding-16 myLink">
-      <h3>Best car rental in the world!</h3>
-      <p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world with CarServiceRentalRUs</p>
-      <input class="w3-input w3-border" type="text" placeholder="Pick-up point">
-      <p><button class="w3-button w3-dark-grey">Search Availability</button></p>
+		<!-- Activity Selection -->
+		<h4 style=color:DodgerBlue>Amazing Activities on the Island</h4>	
+	    <label for="activity">Select Activity:</label>
+		<select id="activity">
+		<option value="watersports">Water Sports - 199 USD</option>
+		<option value="scubaDiving">Scuba Diving - 199 USD</option>
+		<option value="hiking">Hiking - 99 USD</option>
+		</select>
+		
+		<!-- Date Selection -->
+		<label for="date">Select Date:</label>
+		<input type="date" id="date" name="date">
+  
+		<!-- Number of Participants -->
+		<label for="participants">Number of Participants (up to 2):</label>
+		<input type="number" id="participants" name="participants" min="1" max="2">
+  
+		<!-- Submit Button -->
+		<button onclick="bookActivity()">Book Now</button>	
+	
+		<h4 style=color:DodgerBlue>Currency Converter</h4>
+		<p>Taniti's currency is Euro. Be sure to convert the rates below to plan accordinly</p>
+  
+		<label for="amount">Enter Amount:</label>
+		<input type="number" id="amount" name="amount">
+  
+		<label for="from">From Currency:</label>
+		<select id="from">
+		<option value="USD">USD</option>
+		<option value="EUR">EUR</option>
+		<!-- Add more currency options as needed -->
+		</select>
+  
+		<label for="to">To Currency:</label>
+		<select id="to">
+		<option value="USD">USD</option>
+		<option value="EUR">EUR</option>
+		<!-- Add more currency options as needed -->
+		</select>
+  
+		<button onclick="convertCurrency()">Convert</button>
+  
+		<p id="result"></p>		
+		
+		<div class="w3-row-padding w3-margin-top">
+
+		<div class="w3-third">
+		<div class="w3-card">
+		<img src="images/island.jpg" style="width:100%">
+		<div class="w3-container">
+		<h4>Paradise</h4>
+		</div>
+		</div>
+		</div>
+
+		<div class="w3-third">
+		<div class="w3-card">
+		<img src="images/jetski.jpg" style="width:100%">
+		<div class="w3-container">
+		<h4>Jetski</h4>
+		</div>
+		</div>
+		</div>
+
+		<div class="w3-third">
+		<div class="w3-card">
+		<img src="images/pic6.jpg" style="width:100%">
+		<div class="w3-container">
+		<h4>Nature</h4>
+		</div>
+		</div>
+		</div>
+		</div>
+		<br>
+		<!-- Social Media Sharing Buttons -->
+		<div id="social-media-buttons" class="w3-container">
+		<p>Share on Social Media!</p>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/activity-details" target="_blank">
+		<img src="images/facebook.ico" alt="Facebook Share" style="width: 50px; height: auto;">
+		</a>
+		<a href="https://twitter.com/intent/tweet?url=https://example.com/activity-details&amp;text=Check out this awesome snorkeling activity on Taniti Island!" target="_blank">
+		<img src="images/twitter.ico" alt="Twitter Share" style="width: 50px; height: auto;">
+		</a>
+		</div>
+
+		<br>
+		<!-- Rental Selection -->
+		<h3>Best car rental in the world!</h3>
+		<p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world with CarServiceRentalRUs</p>
+		<input class="w3-input w3-border" type="text" placeholder="Pick-up point">
+		<p><button class="w3-button w3-dark-grey">Search Availability</button></p>
+		
     </div>
+	
   </div>
 </header>
 
@@ -178,25 +267,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
   <p>Template adapted from w3schools <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a>. Edited for Taniti</p>
 </footer>
 
-<script>
-// Tabs
-function openLink(evt, linkName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("myLink");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-  }
-  document.getElementById(linkName).style.display = "block";
-  evt.currentTarget.className += " w3-red";
-}
-
-// Click on the first tablink on load
-document.getElementsByClassName("tablink")[0].click();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
